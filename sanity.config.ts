@@ -12,6 +12,10 @@ export default defineConfig({
 
   plugins: [structureTool(), visionTool()],
 
+  deployment: {
+    appId: 'dvw7h9ykw4cgjmghnwrf5c3u',
+  },
+
   schema: {
     types: schemaTypes,
   },
