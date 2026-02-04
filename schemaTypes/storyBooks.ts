@@ -36,6 +36,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'author',
+      title: 'Author',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'shortIntroduction',
       title: 'Short Introduction',
       type: 'object',
@@ -113,19 +119,54 @@ export default defineType({
     }),
     defineField({
       name: 'audioFile',
-      title: 'Audio File',
-      type: 'file',
-      options: {
-        accept: 'audio/*',
-      },
+      title: 'Audio Files',
+      type: 'object',
+      fields: [
+        {
+          name: 'en',
+          title: 'English Audio',
+          type: 'file',
+          options: {
+            accept: 'audio/*',
+          },
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'af',
+          title: 'Afrikaans Audio',
+          type: 'file',
+          options: {
+            accept: 'audio/*',
+          },
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'coverImage',
-      title: 'Cover Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      title: 'Cover Images',
+      type: 'object',
+      fields: [
+        {
+          name: 'en',
+          title: 'English Cover',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'af',
+          title: 'Afrikaans Cover',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          validation: (Rule) => Rule.required(),
+        },
+      ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -169,7 +210,7 @@ export default defineType({
   preview: {
     select: {
       title: 'title.en',
-      media: 'coverImage',
+      media: 'coverImage.en',
       subtitle: 'ageRange',
     },
   },
